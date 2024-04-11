@@ -1,0 +1,37 @@
+.advertisement-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.advertisement-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.advertisement-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.advertisement-form input[type="text"],
+.advertisement-form textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #f5bfbf;
+    border-radius: 4px;
+}
+
+.advertisement-form button[type="submit"] {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #dec2cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.advertisement-form button[type="submit"]:hover {
+    background-color: #d89ae5;
+}

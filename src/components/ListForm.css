@@ -1,0 +1,45 @@
+.advertisement-list {
+    margin-top: 20px;
+}
+
+.advertisement-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.advertisement-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.advertisement-list li {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.advertisement-list li div {
+    margin-bottom: 10px;
+}
+
+.advertisement-list li img {
+    display: block;
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 10px;
+}
+
+.advertisement-list li button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    background-color: #d53950;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.advertisement-list li button:hover {
+    background-color: #ef4760;
+}
