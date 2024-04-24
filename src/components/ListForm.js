@@ -1,25 +1,32 @@
-import React, { useContext } from 'react';
-import { AdvertisementContext } from '../contexts/AdvertisementContext';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteAdvertisement } from '../redux/actions';
 import './ListForm.css';
 
+
+// аламыз списка объявленияны и функция removeAdvertisement контексттан
 const ListForm = () => {
-    const { advertisements, removeAdvertisement } = useContext(AdvertisementContext);
+    const ads = useSelector(state => state.advertisements);
+    const dispatch = useDispatch();
+
+    const handleDelete = (id) => {
+        dispatch(deleteAdvertisement(id));
+    };
 
     return (
         <div className="advertisement-list">
-            <h2>Advertisements</h2>
+            <h2>advertisements</h2>
             <ul>
-                {advertisements.map(advertisement => (
-                    <li key={advertisement.id}>
+                {ads.map(ad => (
+                    <li key={ad.id}>
                         <div>
-                            <strong>{advertisement.title}</strong>
-                            <p>{advertisement.content}</p>
+                            <strong>{ad.title}</strong>
+                            <p>{ad.content}</p>
                         </div>
-                        {advertisement.photo && (
-                            <img src={URL.createObjectURL(advertisement.photo)} alt="Advertisement" />
+                        {ad.photo && (
+                            <img src={URL.createObjectURL(ad.photo)} alt="Advertisement" />
                         )}
-                        <br/>
-                        <button onClick={() => removeAdvertisement(advertisement.id)}>Delete</button>
+                        <button onClick={() => handleDelete(ad.id)}>Delete</button>
                     </li>
                 ))}
             </ul>

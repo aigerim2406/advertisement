@@ -6,3 +6,5 @@ const useAdvertisement = () => {
 }
 
 export default useAdvertisement;
+
+//объявление ушин баска компоненттермен жумыс жасау ушин керек

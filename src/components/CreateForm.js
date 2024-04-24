@@ -1,25 +1,33 @@
-import React, { useState, useContext } from 'react';
-import { AdvertisementContext } from '../contexts/AdvertisementContext';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addAdvertisement } from '../redux/actions';
 import './CreateForm.css';
 
 const CreateForm = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [photo, setPhoto] = useState(null); // Состояние для хранения фотографии
-    const { addAdvertisement } = useContext(AdvertisementContext);
+    const [photo, setPhoto] = useState(null); // Состояние для хранения
+    const dispatch = useDispatch();
 
+    // форманы жберу ушин обработка жасайды
     const handleSubmit = (e) => {
         e.preventDefault();
-        addAdvertisement(title, content, photo); // Добавление фотографии в функцию добавления объявления
-        setTitle('');
+        const newAdvertisement = {
+            id: Date.now(),
+            title,
+            content,
+            photo
+        };
+        dispatch(addAdvertisement(newAdvertisement));
+        setTitle(''); // вызов функции dispatch с передачей действия и данных объявления
         setContent('');
-        setPhoto(null);
+        setPhoto(null)
     }
 
     const handlePhotoChange = (e) => {
         const file = e.target.files[0];
         setPhoto(file);
-    }
+    } // фотоны файл аркылы добавляем
 
     return (
         <div className="advertisement-form">
@@ -27,7 +35,7 @@ const CreateForm = () => {
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
                 <textarea placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} required />
-                <input type="file" accept="image/*" onChange={handlePhotoChange} /> {/* Добавление поля для загрузки фотографии */}
+                <input type="file" accept="image/*" onChange={handlePhotoChange} />
                 <br/>
                 <button type="submit">Add</button>
             </form>
